@@ -1,6 +1,6 @@
 ﻿
 # Install or upgrade software by using WinGet. Can be run in System context because
-# the script tries to found the winget.exe from C:\Program Files\WindowsApps\ .
+# the script tries to find the winget.exe from C:\Program Files\WindowsApps\ .
 
 
 
