@@ -27,11 +27,18 @@ Process {
 
     # Find path for winget.exe so winget can be run in system conntext.
     $WingetPath = Resolve-Path "C:\Program Files\WindowsApps\Microsoft.DesktopAppInstaller_*_x64__8wekyb3d8bbwe\winget.exe"
-    If ($ResolveWingetPath){
+    If ($WingetPath){
             Write-Host "Found Winget $WingetPath"
        } Else {
-           Write-Host "Did not found winget.exe"
-           exit 1
+           Write-Host "Did not found winget.exe from c:\Program Files\WindowsApps"
+           Write-Host "Checking if Get-Command will find winget.exe"
+           $WingetPath=(get-command winget.exe -EA ignore).source
+           If ($WingetPath){
+                Write-Host "Found Winget $WingetPath"
+           } Else {
+                Write-Host "Winget.exe not found!"
+                exit 1
+           }
     }
 
 
